@@ -15,7 +15,7 @@ class Diviseur {
         }
         if($diviseur === 0)
         {
-        	throw new DivisionByZeroError("Merci de ne pas diviser par 0");
+        	throw new DivisionError("Merci de ne pas diviser par 0");
         }
         return $valeurs[$index] / $diviseur;
     }
@@ -33,20 +33,21 @@ do{
 		$test = (new Diviseur())->division($index, $diviseur);
 		$climate->output("Le résultat de la division est : " . $test);
 	}catch (sizeTabException $e){
-	    echo $e->getMessage() . PHP_EOL;
-	}catch (\DivisionByZeroError $e){
+		echo $e->getMessage() . PHP_EOL;
+	}catch (\DivisionError $e){
 		echo $e->getMessage() . PHP_EOL;
 	}catch (\TypeError $e){
-	    echo "Entrer un nombre entier" . PHP_EOL;
+		echo "Entrer un nombre entier" . PHP_EOL;
 	}catch (\Throwable $e){
-	    echo "Erreur" .$e->getMessage();
+		echo "Erreur" .$e->getMessage();
 	}
-}while(isset($test)===false);
+}
+while(isset($test)===false);
 
 class ExoException extends \Exception {
 	
 }
 
-class TailleTableauException extends ExoException {
+class sizeTabException extends ExoException {
 	
 }
